@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biodata - Perkenalan Diri</title>
+  <style>
+    :root{
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --accent: #4f46e5;
+      --muted: #6b7280;
+      --radius: 14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 100%);
+      padding:24px;
+      color:#0f172a;
+    }
+
+    .container{
+      width:100%;
+      max-width:920px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(15,23,42,0.06);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:0;
+    }
+
+    /* responsive: single column on small screens */
+    @media (max-width:760px){
+      .card{ grid-template-columns: 1fr; }
+    }
+
+    .left{
+      padding:28px;
+      background:
+        linear-gradient(180deg, rgba(79,70,229,0.06), rgba(79,70,229,0.02));
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+
+    .avatar{
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid white;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+      background:#e6e9f8;
+    }
+
+    h1{
+      margin:0;
+      font-size:1.35rem;
+      text-align:center;
+    }
+
+    .role{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+      text-align:center;
+    }
+
+    .contact{
+      width:100%;
+      margin-top:8px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .chip{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.03);
+      font-size:0.92rem;
+      color:var(--muted);
+    }
+
+    .right{
+      padding:28px;
+    }
+
+    .section{
+      margin-bottom:18px;
+    }
+
+    .section h2{
+      margin:0 0 10px 0;
+      font-size:1rem;
+      color:var(--accent);
+    }
+
+    p{ margin:0 0 8px 0; color:#111827; line-height:1.5; }
+
+    ul{ margin:0 0 8px 18px; color:#111827; }
+
+    .buttons{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .btn{
+      border:0;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+    }
+
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(79,70,229,0.12);
+    }
+
+    footer{
+      margin-top:10px;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="region" aria-label="Biodata Perkenalan Diri">
+      <aside class="left">
+        <!-- GANTI src ke nama file foto kamu, misal "foto-saya.jpg" atau URL -->
+        <img class="avatar" src="foto.jpg" alt="Foto [Nama Anda]" />
+        <div>
+          <h1 id="nama">Nama Lengkap</h1>
+          <p class="role" id="jabatan">Pekerjaan / Jurusan • Kota</p>
+        </div>
+
+        <div class="contact" aria-label="Kontak">
+          <div class="chip">📧 <span id="email">nama@email.com</span></div>
+          <div class="chip">📱 <span id="phone">+62 812-xxxx-xxxx</span></div>
+          <div class="chip">📍 <span id="location">Kota, Indonesia</span></div>
+        </div>
+
+        <div style="width:100%; margin-top:auto;">
+          <button class="btn" onclick="printCard()">Cetak / Simpan PDF</button>
+          <button class="btn secondary" onclick="downloadVCard()">Unduh vCard</button>
+        </div>
+      </aside>
+
+      <main class="right">
+        <section class="section" aria-labelledby="intro-title">
+          <h2 id="intro-title">Perkenalan Singkat</h2>
+          <p id="bio">
+            Halo! Perkenalkan nama saya <strong>Nama Lengkap</strong>. Saya bekerja sebagai <em>Pekerjaan</em> dan saat ini berdomisili di <em>Kota</em>.
+            Saya tertarik pada bidang [mis. Web Development, Desain, Data Science], dan senang belajar hal baru.
+          </p>
+        </section>
+
+        <section class="section" aria-labelledby="skills-title">
+          <h2 id="skills-title">Keahlian</h2>
+          <ul id="skills">
+            <li>HTML, CSS, JavaScript</li>
+            <li>Desain UI/UX dasar</li>
+            <li>Komunikasi & kerja tim</li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="education-title">
+          <h2 id="education-title">Pendidikan / Pengalaman</h2>
+          <p><strong>S1 / Nama Universitas</strong> — Jurusan (Tahun masuk — Tahun lulus)</p>
+          <p><strong>Pengalaman Kerja / Proyek</strong> — Deskripsi singkat proyek atau posisi.</p>
+        </section>
+
+        <div class="buttons" aria-hidden="false">
+          <button class="btn" onclick="contactMe()">Hubungi Saya</button>
+          <button class="btn secondary" onclick="toggleDark()">Toggle Tema</button>
+        </div>
+
+        <footer>
+          <small>Terakhir diperbarui: <span id="last-updated"></span></small>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Script kecil: cetak, buat vCard sederhana, dan tampilkan tanggal terakhir update
+    function printCard(){
+      window.print();
+    }
+
+    function downloadVCard(){
+      const name = document.getElementById('nama').textContent.trim();
+      const phone = document.getElementById('phone').textContent.trim();
+      const email = document.getElementById('email').textContent.trim();
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+TEL;TYPE=CELL:${phone}
+EMAIL;TYPE=INTERNET:${email}
+END:VCARD`;
+      const blob = new Blob([vcard], {type: 'text/vcard'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name.replace(/\s+/g,'_') + '.vcf';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function contactMe(){
+      const email = document.getElementById('email').textContent.trim();
+      window.location.href = 'mailto:' + email + '?subject=Perkenalan%20dari%20website';
+    }
+
+    // Toggle tema sederhana
+    function toggleDark(){
+      const root = document.documentElement;
+      if(root.style.getPropertyValue('--bg') === ''){
+        // use inline var to toggle; simpler: invert background
+      }
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')){
+        root.style.setProperty('--bg','#0b1220');
+        root.style.setProperty('--card','#071022');
+        root.style.setProperty('--accent','#7c3aed');
+        root.style.setProperty('--muted','#a8b3c6');
+        document.body.style.color = '#e6eef8';
+      } else {
+        root.style.setProperty('--bg','#f5f7fb'); 
+        root.style.setProperty('--card','#ffffff');
+        root.style.setProperty('--accent','#4f46e5');
+        root.style.setProperty('--muted','#6b7280');
+        document.body.style.color = '#0f172a';
+      }
+    }
+
+    // Tampilkan tanggal update
+    document.getElementById('last-updated').textContent =
+      new Date().toLocaleDateString('id-ID', { year:'numeric', month:'long', day:'numeric' });
+
+    // Catatan: ganti teks pada elemen (nama, jabatan, bio, dsb.) atau foto sesuai kebutuhan.
+  </script>
+</body>
+</html>
